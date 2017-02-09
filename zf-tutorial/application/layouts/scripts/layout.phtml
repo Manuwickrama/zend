@@ -1,1 +1,21 @@
-<?php echo $this->layout()->content; ?>
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type','text/html;charset=utf-8');
+$this->headTitle()->setSeparator('-');
+$this->headTitle('Zend Framework Tutorial');
+
+echo $this->doctype();
+?>
+
+<html>
+<head>
+	<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
+	<?php echo $this->headLink()->prependStylesheet($this->baseURL().'css/site.css'); ?>
+</head>
+<body>
+<div>
+	<h1><?php echo $this->escape($this->title); ?></h1>
+	<?php echo $this->layout()->content; ?>
+</div>
+</body>
+</html>
