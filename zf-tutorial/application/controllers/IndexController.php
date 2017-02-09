@@ -18,6 +18,27 @@ class IndexController extends Zend_Controller_Action
     public function addAction()
     {
         // action body
+        $form = new Application_Form_Album();
+        $form->submit->setLabel('Add');
+        $form->view->form = $form;
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $artist = $form->getValue('artist');
+                $title = $form->getValue('title');
+                $albums = new Application_Model_DbTable_Albums();
+                $albums->addAlbum($artist,$title);
+
+                $this->_helper->redirector('index');
+            } else {
+                $form->populate($formData);
+            }
+            
+        } else {
+            # code...
+        }
+        
     }
 
     public function editAction()
