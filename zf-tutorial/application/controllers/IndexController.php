@@ -20,7 +20,7 @@ class IndexController extends Zend_Controller_Action
         // action body
         $form = new Application_Form_Album();
         $form->submit->setLabel('Add');
-        $form->view->form = $form;
+        $this->view->form = $form;
 
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
@@ -35,8 +35,6 @@ class IndexController extends Zend_Controller_Action
                 $form->populate($formData);
             }
             
-        } else {
-            # code...
         }
         
     }
